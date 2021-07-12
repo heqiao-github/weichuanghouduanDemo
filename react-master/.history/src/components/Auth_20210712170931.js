@@ -9,7 +9,11 @@ const { SubMenu } = Menu;
 
 
 class FrontendAuth extends Component {
-  
+  componentDidMount() {
+    const { location, actions,config } = this.props;
+    console.log("this.props",this.props)
+
+  }
   subMenu = (routes) => {
     return routes?routes.map((route,key) => {
       if((route.path !== '/login') && (route.path !== '/404')){
@@ -75,9 +79,8 @@ debugger
       
     }
     let navleft = (routes) => {
-      console.log(routes,3333333)
       return (
-        <Page subMenu={this.subMenu(config)} component={routes.component} path={routes.path} ></Page>
+        <Page sub></Page>
       
       )
     };

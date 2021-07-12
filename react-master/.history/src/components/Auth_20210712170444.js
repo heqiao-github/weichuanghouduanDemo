@@ -9,7 +9,11 @@ const { SubMenu } = Menu;
 
 
 class FrontendAuth extends Component {
-  
+  componentDidMount() {
+    const { location, actions,config } = this.props;
+    console.log("this.props",this.props)
+
+  }
   subMenu = (routes) => {
     return routes?routes.map((route,key) => {
       if((route.path !== '/login') && (route.path !== '/404')){
@@ -75,14 +79,9 @@ debugger
       
     }
     let navleft = (routes) => {
-      console.log(routes,3333333)
       return (
-        <Page subMenu={this.subMenu(config)} component={routes.component} path={routes.path} ></Page>
-      
-      )
-    };
-
-      {/* <div className="main-content">
+        <P
+        {/* <div className="main-content">
           <div className="header">
             你好
           </div>
@@ -97,6 +96,8 @@ debugger
             </div>
           </div>
         </div> */}
+      )
+    };
     if(isLogin){
       // 如果是登陆状态，想要跳转到登陆，重定向到主页
       if(pathname === '/login'){

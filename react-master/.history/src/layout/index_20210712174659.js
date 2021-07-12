@@ -40,9 +40,7 @@ export default class Page extends React.Component {
               className: 'trigger',
               onClick: this.toggle,
             })}
-            <div className="header-content">
-              nihao
-            </div>
+            
           </Header>
           <Content
             className="site-layout-background"

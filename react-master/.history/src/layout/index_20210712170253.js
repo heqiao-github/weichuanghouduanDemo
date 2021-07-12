@@ -3,7 +3,6 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import { Layout, Menu } from 'antd';
-import { Route,Redirect, Link } from 'react-router-dom';
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -31,7 +30,15 @@ export default class Page extends React.Component {
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            {this.props.subMenu}
+            <Menu.Item key="1" icon={<UserOutlined />}>
+              nav 1
+            </Menu.Item>
+            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+              nav 2
+            </Menu.Item>
+            <Menu.Item key="3" icon={<UploadOutlined />}>
+              nav 3
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -40,9 +47,6 @@ export default class Page extends React.Component {
               className: 'trigger',
               onClick: this.toggle,
             })}
-            <div className="header-content">
-              nihao
-            </div>
           </Header>
           <Content
             className="site-layout-background"
@@ -52,7 +56,7 @@ export default class Page extends React.Component {
               minHeight: 280,
             }}
           >
-            {<Route  exact path={this.props.path} component={this.props.component}></Route>}
+            Content
           </Content>
         </Layout>
       </Layout>

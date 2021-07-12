@@ -75,7 +75,6 @@ debugger
       
     }
     let navleft = (routes) => {
-      console.log(routes,3333333)
       return (
         <Page subMenu={this.subMenu(config)} component={routes.component} path={routes.path} ></Page>
       

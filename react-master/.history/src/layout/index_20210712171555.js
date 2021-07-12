@@ -40,9 +40,6 @@ export default class Page extends React.Component {
               className: 'trigger',
               onClick: this.toggle,
             })}
-            <div className="header-content">
-              nihao
-            </div>
           </Header>
           <Content
             className="site-layout-background"
@@ -52,7 +49,7 @@ export default class Page extends React.Component {
               minHeight: 280,
             }}
           >
-            {<Route  exact path={this.props.path} component={this.props.component}></Route>}
+            {<Route  exact path="{this.props.path}" component="{this.props.component}"></Route>}
           </Content>
         </Layout>
       </Layout>
