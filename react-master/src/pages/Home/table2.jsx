@@ -58,13 +58,7 @@ const columns = [
       width: 150,
     },
     { title: 'Column 8', dataIndex: 'address', key: '8' },
-    {
-      title: 'Action',
-      key: 'operation',
-      fixed: 'right',
-      width: 100,
-      render: () => <a>审核</a>,
-    },
+    
   ];
   
   const data = [];
