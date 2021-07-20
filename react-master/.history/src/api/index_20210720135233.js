@@ -10,27 +10,12 @@ export const logins = (data) =>{
       })
 }
 
-export const reqUserList = () => {
-  return request({
-    method: "GET",
-    url: "/api/user/list"
-  })
-}
-
-export const reqDeleteUser = (data) => {
-  return request({
-    method: "POST",
-    url: "/api/manage/user/delete",
-    data: data
-  })
-}
-
 export const reqAddUpdateUser = (data) => {
   let url = "";
   if(data._id){
-    url = "/api/user/userUpdate"
+    url = "/api/manage/user/update"
   }else{
-    url = "/api/user/userAdd"
+    url = "/api/manage/user/add"
   }
   return request({
     method: "POST",

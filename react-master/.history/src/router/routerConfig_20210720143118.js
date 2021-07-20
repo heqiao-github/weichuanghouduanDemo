@@ -38,7 +38,7 @@ let routerConfig = [
           auth: true,
         },
         {
-          path: "/user/role",
+          path: "/user/add",
           component: Role,
           name: "角色",
           auth: true,

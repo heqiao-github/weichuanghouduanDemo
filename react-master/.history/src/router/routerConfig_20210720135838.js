@@ -1,7 +1,7 @@
 import Home from '../pages/Home/Home';
 import User from '../pages/Home/Home';
-import UserList from '../pages/User/user';
-import Role from '../pages/role/Role';
+import UserList from '../pages/user';
+import UserAdd from '../components/User/UserAdd';
 import News from '../components/News';
 import Login from '../pages/login/login';
 
@@ -38,8 +38,8 @@ let routerConfig = [
           auth: true,
         },
         {
-          path: "/user/role",
-          component: Role,
+          path: "/user/add",
+          component: UserAdd,
           name: "角色",
           auth: true,
         },
