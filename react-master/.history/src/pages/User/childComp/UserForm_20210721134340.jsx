@@ -11,9 +11,9 @@ export default class UserForm extends React.Component{
 
   onFinish = async(user) => {
     const { getUser,hideAddRoleBox } = this.props;
-    const propsUser = this.props.user.userId;
+    const propsUser = this.props.user._id;
     if(propsUser){
-      user.userId = propsUser;
+      user._id = propsUser;
     }
     const res = await reqAddUpdateUser(user);
     if(res.code === 100){
@@ -63,7 +63,7 @@ export default class UserForm extends React.Component{
             </Select>
           </Form.Item>
           <Button type="primary" style={{margin: "0 7px 0 330px"}} onClick={hideAddRoleBox}>取消</Button>
-          <Button type="primary" htmlType="submit">确定</Button>
+          <Button type="primary" htmlType="submit">确定d</Button>
         </Form>
     )
   }

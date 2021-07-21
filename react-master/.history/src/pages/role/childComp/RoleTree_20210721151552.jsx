@@ -35,7 +35,7 @@ export default class RoleTree extends Component {
 
   render() {
     const {menus} = this.state; 
-    console.log(menus,3444444444)
+
     return (
       <Tree
         //节点前添加复选框
@@ -48,7 +48,7 @@ export default class RoleTree extends Component {
         //复选框发生改变触发
         onCheck={this.onCheck}
         //复选框需要选中的节点有哪些
-        checkedKeys={menus}
+        defaultCheckedKeys={menus}
       />
     )
   }

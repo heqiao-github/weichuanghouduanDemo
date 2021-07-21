@@ -32,6 +32,7 @@ export default class User extends Component {
   //获取用户列表
   getUser = async() => {
     const res = await reqUserList();
+    console.log(res,8888)
     if(res.code === 100){
       const {users, roles} = res.data;
       this.initRoleName(roles);
@@ -157,7 +158,8 @@ export default class User extends Component {
             //销毁后/隐藏后 把内容清除
             destroyOnClose
             title={user.userId ? "修改用户" : "创建用户"}
-            
+            okText="确认"
+            cancelText="取消"
             visible={visible}
             onCancel={this.hideAddRoleBox}
             footer={false}

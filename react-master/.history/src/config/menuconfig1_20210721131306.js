@@ -18,8 +18,8 @@ const menuConfig1 = [
     ]
   },
   {
-    key: "/me",
-    title: "个人中心"
+    key: "/news",
+    title: "新闻"
   }
 ]
 

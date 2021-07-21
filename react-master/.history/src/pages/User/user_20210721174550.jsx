@@ -35,6 +35,8 @@ export default class User extends Component {
     if(res.code === 100){
       const {users, roles} = res.data;
       this.initRoleName(roles);
+      localStorage.setItem("roles",JSON.stringify(roles));
+      //localStorage.setItem("user",JSON.stringify(users))
       this.setState({
         users,
         roles

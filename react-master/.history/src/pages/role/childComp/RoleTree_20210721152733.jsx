@@ -48,7 +48,8 @@ export default class RoleTree extends Component {
         //复选框发生改变触发
         onCheck={this.onCheck}
         //复选框需要选中的节点有哪些
-        checkedKeys={menus}
+        defaultCheckedKeys={menus}
+        selectedKeys={menus}
       />
     )
   }

@@ -11,9 +11,9 @@ export default class UserForm extends React.Component{
 
   onFinish = async(user) => {
     const { getUser,hideAddRoleBox } = this.props;
-    const propsUser = this.props.user.userId;
+    const propsUser = this.props.user._id;
     if(propsUser){
-      user.userId = propsUser;
+      user._id = propsUser;
     }
     const res = await reqAddUpdateUser(user);
     if(res.code === 100){
@@ -45,7 +45,7 @@ export default class UserForm extends React.Component{
           </Form.Item>
           {user._id ? 
           null : 
-          <Form.Item name="password" label="密码" initialValue={user.phone} rules={[{ required: true,message: "密码不能为空" }]}>
+          <Form.Item name="password" label="密码" rules={[{ required: true,message: "密码不能为空" }]}>
             <Input type="password" />
           </Form.Item>
           }

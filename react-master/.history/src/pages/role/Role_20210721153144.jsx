@@ -125,7 +125,7 @@ class Role extends Component {
       } 
       
     }else{
-      message.error(res.message);
+      message.error(res.msg);
     }
     this.setState({isAuth: false});
   }

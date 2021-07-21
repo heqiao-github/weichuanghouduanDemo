@@ -1,24 +1,24 @@
-import React from "react";
-import "./login.scss";
-import { Form, Input, Button, Checkbox, message } from "antd";
-import { connect } from "react-redux";
-import { loginIn } from "../../store/action";
+import React from 'react';
+import './login.scss';
+import { Form, Input, Button, Checkbox ,message } from 'antd';
+import { connect } from 'react-redux';
+import {loginIn} from '../../store/action'
 
-import { logins } from "../../api/index";
+import {logins} from '../../api/index'
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: "",
-      username: "ddd3333",
-      Password: "2222",
-    };
+      message: '',
+      username: 'ddd3333',
+      Password:'2222'
+    }
   }
   componentDidMount() {
-    console.log(this);
+    console.log(this)
   }
-
+  
   render() {
     const layout = {
       labelCol: {
@@ -34,33 +34,35 @@ class Login extends React.Component {
         span: 16,
       },
     };
-    const { login } = this.props;
-    const onFinish = (values) => {
-      new Promise((resolve, reject) => {
-        logins({
-          username: values.username,
-          password: values.password,
-        })
-          .then((res) => {
-            resolve(res);
-          })
-          .catch((error) => {
-            reject(error);
-          });
-      }).then((res) => {
-        if (res.code == 100) {
-          localStorage.setItem("__config_center_token", res.data.user.role_id);
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          localStorage.setItem("roles", JSON.stringify(res.data.roles));
-          this.props.history.push("/");
-        } else {
-          message.error(res.message);
-        }
-      });
-    };
+    const {login} = this.props;
+    const onFinish = values => {
 
-    const onFinishFailed = (errorInfo) => {
-      console.log("Failed:", errorInfo);
+     new Promise((resolve,reject) =>{
+      logins({
+        username:values.username,
+        password:values.password
+      }).then(res => {
+        resolve(res)
+      }).catch(error=>{
+              reject(error)
+      })  
+      
+     }).then(res => {
+        if(res.code == 100){
+          localStorage.setItem('__config_center_token',res.data.user.role_id);
+          localStorage.setItem("user",JSON.stringify(res.data.user));
+          localStorage.setItem("roles",JSON.stringify(res.data.roles));
+          this.props.history.push("/")
+        } else {
+          message.error(res.message)
+        }
+      })
+
+       
+    };
+    
+    const onFinishFailed = errorInfo => {
+      console.log('Failed:', errorInfo);
     };
     return (
       <div className="login">
@@ -79,7 +81,7 @@ class Login extends React.Component {
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: 'Please input your username!',
               },
             ]}
           >
@@ -91,7 +93,7 @@ class Login extends React.Component {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: 'Please input your password!',
               },
             ]}
           >
@@ -108,20 +110,22 @@ class Login extends React.Component {
           </Form.Item>
         </Form>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    // loginInfo: state.loginInfo
-  };
-};
+      // loginInfo: state.loginInfo
+  }
+}
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (data) => {
+    login:(data)=>{
       dispatch(loginIn(data));
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+     
+    }
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

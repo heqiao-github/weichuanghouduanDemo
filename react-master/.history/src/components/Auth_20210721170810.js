@@ -15,23 +15,23 @@ class FrontendAuth extends Component {
     const roles = JSON.parse(localStorage.getItem("roles"));
     const user = JSON.parse(localStorage.getItem("user"));
     debugger
-    const {menus} = roles && roles.find(item => item._id === user.role_id);
+    const {menus} = roles.find(item => item._id === user.role_id);
     
     const newRouter = routes?routes.map((route,key) => {
       
       if((route.path !== '/login') && (route.path !== '/404')){
         if(route.children.length) {
-          return  (<SubMenu key={key}  title={route.name} >
+          return  menus.include(route.path) ? (<SubMenu key={key}  title={route.name} >
                     {
                       route.children.map((item,key) => {
-                        return menus.includes(item.path) ? (<Menu.Item key={'sub'+ key}>
+                        return menus.include(item.path) ? (<Menu.Item key={'sub'+ key}>
                                   <Link to={item.path}>{item.name}</Link>
                               </Menu.Item>) : ""
                       })
                     }
-                  </SubMenu>) 
+                  </SubMenu>) : ""
         }else {
-          return menus.includes(route.path) ? (
+          return menus.include(route.path) ? (
             <Menu.Item key={key+""}>
               <Link to={route.path}>{route.name}</Link>
             </Menu.Item>

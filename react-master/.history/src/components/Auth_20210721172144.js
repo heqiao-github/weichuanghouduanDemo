@@ -15,7 +15,7 @@ class FrontendAuth extends Component {
     const roles = JSON.parse(localStorage.getItem("roles"));
     const user = JSON.parse(localStorage.getItem("user"));
     debugger
-    const {menus} = roles && roles.find(item => item._id === user.role_id);
+    const {menus} = roles.find(item => item._id === user.role_id);
     
     const newRouter = routes?routes.map((route,key) => {
       

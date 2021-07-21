@@ -30,7 +30,7 @@ let routerConfig = [
     {
       path: "/userCenter",
       component: User,
-      name: "用户中心",
+      name: "用户中心d",
       children:[   /*嵌套路由*/
         {
           path: "/user",
@@ -47,9 +47,9 @@ let routerConfig = [
       ]
     },
     {
-      path: "/me",
+      path: "/news",
       component: News,
-      name: "个人中心",
+      name: "新闻",
       auth: true,
       children:[],
     }

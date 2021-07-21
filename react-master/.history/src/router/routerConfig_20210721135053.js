@@ -24,7 +24,6 @@ let routerConfig = [
       path: "/404",
       component: Login,
       name: "报错",
-      auth: false,
       children:[],
     },
     {
@@ -47,9 +46,9 @@ let routerConfig = [
       ]
     },
     {
-      path: "/me",
+      path: "/news",
       component: News,
-      name: "个人中心",
+      name: "新闻",
       auth: true,
       children:[],
     }

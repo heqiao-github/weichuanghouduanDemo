@@ -11,9 +11,9 @@ export default class UserForm extends React.Component{
 
   onFinish = async(user) => {
     const { getUser,hideAddRoleBox } = this.props;
-    const propsUser = this.props.user.userId;
+    const propsUser = this.props.user._id;
     if(propsUser){
-      user.userId = propsUser;
+      user._id = propsUser;
     }
     const res = await reqAddUpdateUser(user);
     if(res.code === 100){

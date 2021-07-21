@@ -27,7 +27,7 @@ export const reqDeleteUser = (data) => {
 
 export const reqAddUpdateUser = (data) => {
   let url = "";
-  if(data.userId){
+  if(data._id){
     url = "/api/user/userUpdate"
   }else{
     url = "/api/user/userAdd"

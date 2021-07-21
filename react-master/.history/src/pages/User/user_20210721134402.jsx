@@ -32,6 +32,7 @@ export default class User extends Component {
   //获取用户列表
   getUser = async() => {
     const res = await reqUserList();
+    console.log(res,8888)
     if(res.code === 100){
       const {users, roles} = res.data;
       this.initRoleName(roles);

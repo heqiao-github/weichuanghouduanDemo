@@ -32,6 +32,7 @@ export default class User extends Component {
   //获取用户列表
   getUser = async() => {
     const res = await reqUserList();
+    console.log(res,8888)
     if(res.code === 100){
       const {users, roles} = res.data;
       this.initRoleName(roles);
@@ -112,8 +113,8 @@ export default class User extends Component {
       okText: '确认',
       cancelText: '取消',
       onOk: async() => {
-        const {userId} = user;
-        const res = await reqDeleteUser({userId: userId});
+        const {_id} = user;
+        const res = await reqDeleteUser({userId: _id});
         if(res.code === 100){
           message.success("删除用户成功");
           //更新用户列表
@@ -156,8 +157,9 @@ export default class User extends Component {
           <Modal
             //销毁后/隐藏后 把内容清除
             destroyOnClose
-            title={user.userId ? "修改用户" : "创建用户"}
-            
+            title={user._id ? "修改用户" : "创建用户"}
+            okText="确认"
+            cancelText="取消"
             visible={visible}
             onCancel={this.hideAddRoleBox}
             footer={false}

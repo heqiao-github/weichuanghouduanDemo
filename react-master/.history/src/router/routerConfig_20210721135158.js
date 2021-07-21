@@ -47,9 +47,9 @@ let routerConfig = [
       ]
     },
     {
-      path: "/me",
+      path: "/news",
       component: News,
-      name: "个人中心",
+      name: "新闻",
       auth: true,
       children:[],
     }

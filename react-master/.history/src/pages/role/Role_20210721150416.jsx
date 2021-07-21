@@ -44,7 +44,6 @@ class Role extends Component {
   getRoleList = async() => {
     const res = await reqRoleList();
     if(res.code === 100){
-      console.log(res.data,7676)
       this.setState({
         roles: res.data
       })
@@ -73,7 +72,6 @@ class Role extends Component {
 
   //显示设置权限框
   showAuth = () => {
-    console.log(this.role,this.roles,33333)
     this.setState({
       isAuth: true
     })
@@ -104,6 +102,7 @@ class Role extends Component {
 
   //设置用户权限
   editRoleAuth = async() => {
+    debugger
     let {role} = this.state;
     let roleId = localStorage.getItem('__config_center_token');
     let menus = this.treeRef.current.getMenus();
@@ -119,13 +118,13 @@ class Role extends Component {
       this.getRoleList();
       2.因为改变了role.menus 而role是来源于每一行Row 最终指向的数组roles 所以改变role的属性 roles自然发生了改变 */
       if(roleId === role._id){
-        this.props.history.replace("/login"); 
+        this.props.history.replace("/"); 
         localStorage.setItem('__config_center_token',"");
         message.success(roleId === role._id ? "当前用户的权限更新了,请重新登录" : "设置角色权限成功");
       } 
       
     }else{
-      message.error(res.message);
+      message.error(res.msg);
     }
     this.setState({isAuth: false});
   }
@@ -140,7 +139,6 @@ class Role extends Component {
 
   render() {
     const {roles,role,roleName,visible,isAuth} = this.state;
-    console.log(role,88888)
     const title = (
       <>
       <Button type="primary" style={{marginRight: 20}} onClick={this.showAddRole}>创建角色</Button>
@@ -246,7 +244,7 @@ class Role extends Component {
             <Item label="角色名称" {...layout} >
               <Input type="text" value={role.name} disabled/>  
             </Item>
-            <RoleTree ref={this.treeRef} role={role}/>
+            <RoleTree ref={this.treeRef} />
           </Modal>
       </Card>
     )

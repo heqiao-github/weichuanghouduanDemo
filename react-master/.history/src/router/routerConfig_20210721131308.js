@@ -24,7 +24,6 @@ let routerConfig = [
       path: "/404",
       component: Login,
       name: "报错",
-      auth: false,
       children:[],
     },
     {
@@ -36,7 +35,7 @@ let routerConfig = [
           path: "/user",
           component: UserList,
           name: "用户",
-          auth: false,
+          auth: true,
         },
         {
           path: "/role",
@@ -47,9 +46,9 @@ let routerConfig = [
       ]
     },
     {
-      path: "/me",
+      path: "/news",
       component: News,
-      name: "个人中心",
+      name: "新闻",
       auth: true,
       children:[],
     }

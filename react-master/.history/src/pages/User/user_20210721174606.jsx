@@ -35,6 +35,7 @@ export default class User extends Component {
     if(res.code === 100){
       const {users, roles} = res.data;
       this.initRoleName(roles);
+    
       this.setState({
         users,
         roles

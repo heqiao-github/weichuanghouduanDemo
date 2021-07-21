@@ -47,7 +47,6 @@ const { Header, Sider, Content } = Layout;
   );
 
   render() {
-    const {username} = JSON.parse(localStorage.getItem("user"));
     return (
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
@@ -66,7 +65,7 @@ const { Header, Sider, Content } = Layout;
             <Space size={[20,10]} wrap>
                 <Avatar  src={huge}/>
                 <Dropdown overlay={this.menu} placement="bottomLeft">
-                  <span className="cursor">{username}</span>
+                  <span className="cursor">胡歌</span>
                 </Dropdown>
             </Space>
             </div>
