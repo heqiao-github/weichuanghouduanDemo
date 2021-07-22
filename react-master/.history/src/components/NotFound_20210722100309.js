@@ -1,12 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Result, Button } from 'antd';
-import { useHistory } from "react-router-dom";
+import { useHistory,withRouter } from "react-router-dom";
 
-function NotFound() {
+function NotFound(props) {
   let history = useHistory();
   const goBack = ()=> {
-    history.go(-1);
+    props.history.go(-1);
   }
   return (
     <Result
@@ -18,4 +18,4 @@ function NotFound() {
   )
 }
 
-export default NotFound
+export default withRouter(NotFound);

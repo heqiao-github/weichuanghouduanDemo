@@ -64,9 +64,7 @@ class FrontendAuth extends Component {
   requireAuth = (path) => {
     if (!this.menus) {
       return false;
-    } else if(!this.menus.includes(path)){
-      return false;
-    }else {
+    } else {
       return true;
     }
   };

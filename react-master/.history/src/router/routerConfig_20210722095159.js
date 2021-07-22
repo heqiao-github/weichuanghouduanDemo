@@ -3,7 +3,6 @@ import User from '../pages/Home/Home';
 import UserList from '../pages/User/user';
 import Role from '../pages/role/Role';
 import News from '../components/News';
-import Login from '../pages/login/login';
 import NotFound from '../components/NotFound';
 
 let routerConfig = [

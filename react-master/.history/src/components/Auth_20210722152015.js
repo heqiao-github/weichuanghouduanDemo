@@ -52,7 +52,7 @@ class FrontendAuth extends Component {
     });
     summenu = summenu.filter((i) => i);
 
-    return summenu.length > 0 ? (
+    return menu.length > 0 ? (
       <SubMenu key={key} title={route.name}>
         {summenu}
       </SubMenu>
@@ -64,9 +64,7 @@ class FrontendAuth extends Component {
   requireAuth = (path) => {
     if (!this.menus) {
       return false;
-    } else if(!this.menus.includes(path)){
-      return false;
-    }else {
+    } else {
       return true;
     }
   };
@@ -74,7 +72,6 @@ class FrontendAuth extends Component {
   goToPage = (routes, config) => {
     // 展示菜单信息
     const subMenu = this.getMenu(config);
-    debugger
     return this.requireAuth(routes.path) ? (
       <Page
         subMenu={subMenu}

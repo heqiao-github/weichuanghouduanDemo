@@ -32,6 +32,7 @@ const { Header, Sider, Content } = Layout;
     this.props.history.push("/")
   }
   changeMenu = ({ item, key, keyPath, domEvent }) =>{
+    console.log('33333',item,key,keyPath,domEvent);
     this.setState({
       key
     })

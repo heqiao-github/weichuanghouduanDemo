@@ -4,7 +4,6 @@ import UserList from '../pages/User/user';
 import Role from '../pages/role/Role';
 import News from '../components/News';
 import Login from '../pages/login/login';
-import NotFound from '../components/NotFound';
 
 let routerConfig = [
     {
@@ -23,7 +22,7 @@ let routerConfig = [
     },
     {
       path: "/404",
-      component: NotFound,
+      component: Login,
       name: "报错",
       auth: false,
       children:[],

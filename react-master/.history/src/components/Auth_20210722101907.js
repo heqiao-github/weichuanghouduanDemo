@@ -3,28 +3,40 @@ import { Route, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Menu } from "antd";
 import Page from "../layout";
-import NotAuth from "../components/NotAuth";
+import NotAuth from '../components/NotAuth';
 
 const { SubMenu } = Menu;
 
 class FrontendAuth extends Component {
-  constructor() {
-    super();
-    this.state = {
-      menus: [],
-    };
+  static state = {
+    menus:[]
   }
-  getMenu = (routes) => {
+  subMenu = (routes) => {
+    debugger;
     const roles = JSON.parse(localStorage.getItem("roles"));
     const user = JSON.parse(localStorage.getItem("user"));
+    debugger;
     let { menus } = roles && roles.find((item) => item._id === user.role_id);
-    this.menus = menus;
-    debugger
+    this.setState({
+        menus: menus
+    }) ;
     const newRouter = routes
       ? routes.map((route, key) => {
           if (route.path !== "/login" && route.path !== "/404") {
             if (route.children.length) {
-              return this.getSubMenu(route, key,menus);
+              return (
+                <SubMenu key={key} title={route.name}>
+                  {route.children.map((item, key) => {
+                    return menus && menus.includes(item.path) ? (
+                      <Menu.Item key={"sub" + key}>
+                        <Link to={item.path}>{item.name}</Link>
+                      </Menu.Item>
+                    ) : (
+                      ""
+                    );
+                  })}
+                </SubMenu>
+              );
             } else {
               return menus && menus.includes(route.path) ? (
                 <Menu.Item key={key + ""}>
@@ -38,52 +50,6 @@ class FrontendAuth extends Component {
         })
       : "";
     return newRouter.filter((i) => i);
-  };
-
-  getSubMenu(route, key,menus) {
-    let summenu = route.children.map((item, key) => {
-      return menus && menus.includes(item.path) ? (
-        <Menu.Item key={"sub" + key}>
-          <Link to={item.path}>{item.name}</Link>
-        </Menu.Item>
-      ) : (
-        ""
-      );
-    });
-    summenu = summenu.filter((i) => i);
-
-    return summenu.length > 0 ? (
-      <SubMenu key={key} title={route.name}>
-        {summenu}
-      </SubMenu>
-    ) : (
-      ""
-    );
-  }
-
-  requireAuth = (path) => {
-    if (!this.menus) {
-      return false;
-    } else if(!this.menus.includes(path)){
-      return false;
-    }else {
-      return true;
-    }
-  };
-
-  goToPage = (routes, config) => {
-    // 展示菜单信息
-    const subMenu = this.getMenu(config);
-    debugger
-    return this.requireAuth(routes.path) ? (
-      <Page
-        subMenu={subMenu}
-        component={routes.component}
-        path={routes.path}
-      ></Page>
-    ) : (
-      <NotAuth />
-    );
   };
 
   render() {
@@ -124,7 +90,23 @@ class FrontendAuth extends Component {
         return <Route exact path={pathname} component={component} />;
       }
     }
-
+    const requireAuth = (path,menus) =>{
+      if(!menus){
+        return false;
+      }
+    }
+    let navleft = (routes) => {
+      // 展示菜单信息
+      const subMenu = this.subMenu(config);
+      debugger 
+      return requireAuth(routes.path,menues) ? (
+        <Page
+          subMenu={subMenu}
+          component={routes.component}
+          path={routes.path}
+        ></Page>
+      ):<NotAuth/>;
+    };
     if (roleId) {
       // 如果是登陆状态，想要跳转到登陆，重定向到主页
       if (pathname === "/login") {
@@ -133,7 +115,7 @@ class FrontendAuth extends Component {
         // 如果路由合法，就跳转到相应的路由
         if (targetRouterConfig && targetRouterConfig.path) {
           // return <Route path={pathname} component={targetRouterConfig.component} />
-          return this.goToPage(targetRouterConfig, config);
+          return navleft(targetRouterConfig);
         } else {
           // 如果路由不合法，重定向到 404 页面
           return <Redirect to="/404" />;
@@ -145,7 +127,7 @@ class FrontendAuth extends Component {
         if (targetRouterConfig.auth) {
           return <Redirect to="/login" />;
         } else {
-          return this.goToPage(targetRouterConfig, config);
+          return navleft(targetRouterConfig);
         }
       } else {
         // 非登陆状态下，路由不合法时，重定向至 404

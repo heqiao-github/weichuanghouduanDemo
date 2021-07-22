@@ -31,7 +31,8 @@ const { Header, Sider, Content } = Layout;
     localStorage.setItem("__config_center_token","");
     this.props.history.push("/")
   }
-  changeMenu = ({ item, key, keyPath, domEvent }) =>{
+  changeMenu({ item, key, keyPath, domEvent }) {
+    console.log('33333',item,key,keyPath,domEvent);
     this.setState({
       key
     })
@@ -60,7 +61,7 @@ const { Header, Sider, Content } = Layout;
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline"  selectedKeys={key} onClick={this.changeMenu}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} selectedKeys={key} onClick={this.changeMenu}>
             {this.props.subMenu}
           </Menu>
         </Sider>

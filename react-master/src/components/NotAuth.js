@@ -6,14 +6,15 @@ import { useHistory } from "react-router-dom";
 function NotFound() {
   let history = useHistory();
   const goBack = ()=> {
-    history.go(-1);
+    localStorage.clear()
+    history.go("/login");
   }
   return (
     <Result
     status="404"
     title="404"
-    subTitle="Sorry, the page you visited does not exist."
-    extra={<Button type="primary" onClick={goBack}>返回主页</Button>}
+    subTitle="Sorry, 该用户没有权限！！！！."
+    extra={<Button type="primary" onClick={goBack}>返回登录页面</Button>}
   />
   )
 }

@@ -145,7 +145,6 @@ export default class User extends Component {
 
   //隐藏创建用户框
   hideAddRoleBox = () => {
-    console.log();
     this.formRef.current.formRef.current.resetFields();
     this.setState({ visible: false });
   };

@@ -60,7 +60,7 @@ const { Header, Sider, Content } = Layout;
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline"  selectedKeys={key} onClick={this.changeMenu}>
+          <Menu theme="dark" mode="inline"  >
             {this.props.subMenu}
           </Menu>
         </Sider>

@@ -19,12 +19,11 @@ class FrontendAuth extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     let { menus } = roles && roles.find((item) => item._id === user.role_id);
     this.menus = menus;
-    debugger
     const newRouter = routes
       ? routes.map((route, key) => {
           if (route.path !== "/login" && route.path !== "/404") {
             if (route.children.length) {
-              return this.getSubMenu(route, key,menus);
+              return this.getSubMenu(route, key);
             } else {
               return menus && menus.includes(route.path) ? (
                 <Menu.Item key={key + ""}>
@@ -40,8 +39,8 @@ class FrontendAuth extends Component {
     return newRouter.filter((i) => i);
   };
 
-  getSubMenu(route, key,menus) {
-    let summenu = route.children.map((item, key) => {
+  getSubMenu(route, key) {
+    let menu = route.children.map((item, key) => {
       return menus && menus.includes(item.path) ? (
         <Menu.Item key={"sub" + key}>
           <Link to={item.path}>{item.name}</Link>
@@ -50,11 +49,11 @@ class FrontendAuth extends Component {
         ""
       );
     });
-    summenu = summenu.filter((i) => i);
+    menu = menu.filter((i) => i);
 
-    return summenu.length > 0 ? (
+    return menu.length > 0 ? (
       <SubMenu key={key} title={route.name}>
-        {summenu}
+        {menu}
       </SubMenu>
     ) : (
       ""
@@ -64,9 +63,7 @@ class FrontendAuth extends Component {
   requireAuth = (path) => {
     if (!this.menus) {
       return false;
-    } else if(!this.menus.includes(path)){
-      return false;
-    }else {
+    } else {
       return true;
     }
   };
@@ -74,7 +71,6 @@ class FrontendAuth extends Component {
   goToPage = (routes, config) => {
     // 展示菜单信息
     const subMenu = this.getMenu(config);
-    debugger
     return this.requireAuth(routes.path) ? (
       <Page
         subMenu={subMenu}

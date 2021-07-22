@@ -18,7 +18,7 @@ const { Header, Sider, Content } = Layout;
  class Page extends React.Component {
   state = {
     collapsed: false,
-    key: ['0']
+    selectedKey: '0'
   };
 
   toggle = () => {
@@ -30,12 +30,6 @@ const { Header, Sider, Content } = Layout;
   goToLogin(){
     localStorage.setItem("__config_center_token","");
     this.props.history.push("/")
-  }
-  changeMenu = ({ item, key, keyPath, domEvent }) =>{
-    this.setState({
-      key
-    })
-    
   }
 
    menu = (
@@ -60,7 +54,7 @@ const { Header, Sider, Content } = Layout;
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline"  selectedKeys={key} onClick={this.changeMenu}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']} selectedKeys={[key]}>
             {this.props.subMenu}
           </Menu>
         </Sider>
