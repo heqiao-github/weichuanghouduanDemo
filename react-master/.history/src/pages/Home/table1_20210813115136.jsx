@@ -63,7 +63,14 @@ const columns = [
   ];
   
   const data = [];
-  
+  for (let i = 0; i < 100; i++) {
+    data.push({
+      key: i,
+      name: `Edrward ${i}`,
+      age: 32,
+      address: `London Park no. ${i}`,
+    });
+  }
 
 
   
@@ -72,6 +79,6 @@ const columns = [
      const {unCheck} = props.data;
      console.log(unCheck,777)
       return (
-        <TableTemplate columns={columns} data={[unCheck]} ></TableTemplate>
+        <TableTemplate columns={columns} data={unCheck} ></TableTemplate>
       )
   }

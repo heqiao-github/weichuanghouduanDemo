@@ -63,7 +63,7 @@ const User = () =>{
                     onTabChanges(key);
                 }}
                 >
-                {contentList(data,key)}
+                {contentList(null,key)}
             </Card>  
         </div>
     )

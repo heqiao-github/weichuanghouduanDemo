@@ -46,11 +46,3 @@ export const activeApply = () => {
     url: "/api/user/activeApply",
   })
 }
-
-export const getTableInfo = () => {
-  return request({
-    method: "get",
-    url: "/api/user/getTableInfo",
-  })
-}
-

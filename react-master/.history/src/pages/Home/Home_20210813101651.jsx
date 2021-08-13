@@ -37,15 +37,13 @@ const tabList = [
 
 const User = () =>{
     let [key,setKey] = useState('tab1');
-    let [data,setData] = useState('data');
     
    const onTabChanges = (key) => {
         setKey( key );
       }
    const  getData = (data) =>{
         getTableInfo(data).then(res => {
-          console.log(res,3333)
-          setData(res.data);
+
         })
     }
     useEffect(()=>{
@@ -63,7 +61,7 @@ const User = () =>{
                     onTabChanges(key);
                 }}
                 >
-                {contentList(data,key)}
+                {contentList(null,key)}
             </Card>  
         </div>
     )

@@ -44,7 +44,6 @@ const User = () =>{
       }
    const  getData = (data) =>{
         getTableInfo(data).then(res => {
-          console.log(res,3333)
           setData(res.data);
         })
     }
@@ -63,7 +62,7 @@ const User = () =>{
                     onTabChanges(key);
                 }}
                 >
-                {contentList(data,key)}
+                {contentList(null,key)}
             </Card>  
         </div>
     )

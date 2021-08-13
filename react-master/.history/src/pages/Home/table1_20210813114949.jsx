@@ -63,15 +63,20 @@ const columns = [
   ];
   
   const data = [];
-  
+  for (let i = 0; i < 100; i++) {
+    data.push({
+      key: i,
+      name: `Edrward ${i}`,
+      age: 32,
+      address: `London Park no. ${i}`,
+    });
+  }
 
 
   
   export default function Table1(props){
-    
-     const {unCheck} = props.data;
-     console.log(unCheck,777)
+     console.log(props.data,777)
       return (
-        <TableTemplate columns={columns} data={[unCheck]} ></TableTemplate>
+        <TableTemplate columns={columns} data={} ></TableTemplate>
       )
   }

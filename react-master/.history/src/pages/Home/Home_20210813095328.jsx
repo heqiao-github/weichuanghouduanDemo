@@ -1,4 +1,4 @@
-import React, { Component, useState,useEffect } from 'react';
+import React, { Component, useState } from 'react';
 import { connect } from 'react-redux';
 import { Button,Card } from  "antd";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import { loginOut,addTodo } from '../../store/action/index';
 import Table1 from './table1'
 import Table2 from './table2'
 import {getTableInfo} from '../../api/index'
-
 
 const tabList = [
     {
@@ -25,32 +24,31 @@ const tabList = [
 
   const contentList = (data,key) => {
     if(key === "tab1") {
-      return  <p><Table1 data={data}></Table1></p>
+      return  <p><Table1></Table1></p>
     } else if(key === "tab2") {
-      return <p><Table2 data={data}></Table2></p>
+      return <p><Table2></Table2></p>
     } else {
       return <p>conste3</p>
     }
+   /*  tab1: <p><Table1></Table1></p>,
+    tab2: <p><Table2></Table2></p>,
+    tab3: <p>conste3</p> */
   };
   
 
 
 const User = () =>{
     let [key,setKey] = useState('tab1');
-    let [data,setData] = useState('data');
     
    const onTabChanges = (key) => {
         setKey( key );
       }
-   const  getData = (data) =>{
+   const  getTableInfo = (data) =>{
         getTableInfo(data).then(res => {
-          console.log(res,3333)
-          setData(res.data);
+
         })
     }
-    useEffect(()=>{
-      getData();
-    })
+
     return (
         <div>
            <Card
@@ -63,7 +61,7 @@ const User = () =>{
                     onTabChanges(key);
                 }}
                 >
-                {contentList(data,key)}
+                {contentList[key]}
             </Card>  
         </div>
     )

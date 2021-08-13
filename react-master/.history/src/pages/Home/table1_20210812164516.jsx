@@ -19,42 +19,50 @@ const columns = [
       fixed: 'left',
     },
     {
-      title: '手机号',
-      dataIndex: 'tel',
+      title: 'Column 1',
+      dataIndex: 'address',
       key: '1',
       width: 150,
-    },{
-      title: '身份证号',
-      dataIndex: 'idcard',
+    },
+    {
+      title: 'Column 2',
+      dataIndex: 'address',
       key: '2',
       width: 150,
     },
     {
-      title: '银行卡号',
-      dataIndex: 'bankcard',
-      key: '2',
-      width: 150,
-    },
-    {
-      title: '银行',
-      dataIndex: 'bankname',
+      title: 'Column 3',
+      dataIndex: 'address',
       key: '3',
       width: 150,
     },
     {
-      title: '患者姓名',
-      dataIndex: 'patientName',
+      title: 'Column 4',
+      dataIndex: 'address',
       key: '4',
       width: 150,
     },
     {
-      title: '患者手机号',
-      dataIndex: 'patientPhone',
+      title: 'Column 5',
+      dataIndex: 'address',
       key: '5',
       width: 150,
     },
     {
-      title: '操作',
+      title: 'Column 6',
+      dataIndex: 'address',
+      key: '6',
+      width: 150,
+    },
+    {
+      title: 'Column 7',
+      dataIndex: 'address',
+      key: '7',
+      width: 150,
+    },
+    { title: 'Column 8', dataIndex: 'address', key: '8' },
+    {
+      title: 'Action',
       key: 'operation',
       fixed: 'right',
       width: 100,
@@ -63,15 +71,19 @@ const columns = [
   ];
   
   const data = [];
-  
+  for (let i = 0; i < 100; i++) {
+    data.push({
+      key: i,
+      name: `Edrward ${i}`,
+      age: 32,
+      address: `London Park no. ${i}`,
+    });
+  }
 
 
   
-  export default function Table1(props){
-    
-     const {unCheck} = props.data;
-     console.log(unCheck,777)
+  export default function Table1(){
       return (
-        <TableTemplate columns={columns} data={[unCheck]} ></TableTemplate>
+        <TableTemplate columns={columns} data={data} ></TableTemplate>
       )
   }
