@@ -78,7 +78,7 @@ const columns = [
      console.log(unCheck,777)
       return (
         <div>
-           <TableTemplate columns={columns} data={unCheck} ></TableTemplate>
+           <TableTemplate columns={columns} data={} ></TableTemplate>
         </div>
        
       )

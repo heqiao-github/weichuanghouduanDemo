@@ -19,8 +19,9 @@ let routerConfig = [
     {
       path: "/detail",
       component: Detail,
-      name: "详情页",
-      auth: false,
+      exact:true,
+      auth: true,
+      name: "详情也",
       children:[],
     },
     {
@@ -52,7 +53,7 @@ let routerConfig = [
           component: Role,
           name: "角色",
           auth: true,
-        }
+        },
       ]
     },
     {

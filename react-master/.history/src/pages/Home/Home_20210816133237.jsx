@@ -21,9 +21,9 @@ const tabList = [
 
   const contentList = (data,key) => {
     if(key === "tab1") {
-      return  <Table1 data={data}></Table1>
+      return  <p><Table1 data={data}></Table1></p>
     } else  {
-      return <Table3 data={data}></Table3>
+      return <p><Table3 data={data}></Table3></p>
     } 
   };
   

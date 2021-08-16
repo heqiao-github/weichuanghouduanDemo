@@ -14,6 +14,10 @@ const tabList = [
       tab: '代办',
     },
     {
+      key: 'tab2',
+      tab: '已办',
+    },
+    {
         key: 'tab3',
         tab: '已完结',
     }
@@ -21,9 +25,9 @@ const tabList = [
 
   const contentList = (data,key) => {
     if(key === "tab1") {
-      return  <Table1 data={data}></Table1>
+      return  <p><Table1 data={data}></Table1></p>
     } else  {
-      return <Table3 data={data}></Table3>
+      return <p><Table3 data={data}></Table3></p>
     } 
   };
   
@@ -38,12 +42,13 @@ const User = () =>{
       }
    const  getData = (data) =>{
         getTableInfo(data).then(res => {
+          console.log(res,3333)
           setData(res.data);
         })
     }
     useEffect(()=>{
       getData();
-    },[])
+    })
     return (
         <div>
            <Card

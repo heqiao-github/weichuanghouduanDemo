@@ -1,7 +1,7 @@
 import React from 'react'
 import TableTemplate from '../../components/Table'
 
-import {activeApply} from '../../api/index'
+
 
 const columns = [
     {
@@ -58,7 +58,7 @@ const columns = [
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: () => <a onClick={()=>{activeApply()}}>审核</a>,
+      render: () => <a onClick={()=>{query()}}>查看</a>,
     },
   ];
   
@@ -69,17 +69,11 @@ const columns = [
   
   export default function Table1(props){
     
-     let  {unCheck} = props.data;
-     if(unCheck) {
-          unCheck = [[unCheck]]
-     } else {
-       unCheck = []
+     const {unCheck} = props.data;
+     const query = () => {
+       console.log(7777);
      }
-     console.log(unCheck,777)
       return (
-        <div>
-           <TableTemplate columns={columns} data={unCheck} ></TableTemplate>
-        </div>
-       
+        <TableTemplate columns={columns} data={[unCheck]} ></TableTemplate>
       )
   }

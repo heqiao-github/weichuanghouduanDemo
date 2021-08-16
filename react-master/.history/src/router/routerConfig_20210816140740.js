@@ -5,7 +5,7 @@ import Role from '../pages/role/Role';
 import News from '../components/News';
 import Login from '../pages/login/login';
 import NotFound from '../components/NotFound';
-import Detail from '../pages/detail/index';
+import Detail from '../pages/detail';
 
 let routerConfig = [
     {
@@ -19,8 +19,8 @@ let routerConfig = [
     {
       path: "/detail",
       component: Detail,
-      name: "详情页",
-      auth: false,
+      exact:true,
+      name: "首页",
       children:[],
     },
     {
@@ -52,7 +52,7 @@ let routerConfig = [
           component: Role,
           name: "角色",
           auth: true,
-        }
+        },
       ]
     },
     {

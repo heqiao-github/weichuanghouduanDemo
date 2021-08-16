@@ -69,7 +69,7 @@ const columns = [
   
   export default function Table1(props){
     
-     let  {unCheck} = props.data;
+     const {unCheck} = props.data;
      if(unCheck) {
           unCheck = [[unCheck]]
      } else {
@@ -78,7 +78,7 @@ const columns = [
      console.log(unCheck,777)
       return (
         <div>
-           <TableTemplate columns={columns} data={unCheck} ></TableTemplate>
+           <TableTemplate columns={columns} data={} ></TableTemplate>
         </div>
        
       )

@@ -20,7 +20,6 @@ let routerConfig = [
       path: "/detail",
       component: Detail,
       name: "详情页",
-      auth: false,
       children:[],
     },
     {

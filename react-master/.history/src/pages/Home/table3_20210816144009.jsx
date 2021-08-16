@@ -1,9 +1,10 @@
 import React from 'react'
+import { useHistory } from 'react-router';
 import TableTemplate from '../../components/Table'
 
-import {activeApply} from '../../api/index'
 
-const columns = [
+
+const columns = (query) => ([
     {
       title: '姓名',
       width: 100,
@@ -58,9 +59,9 @@ const columns = [
       key: 'operation',
       fixed: 'right',
       width: 100,
-      render: () => <a onClick={()=>{activeApply()}}>审核</a>,
+      render: () => <a onClick={()=>{query()}}>查看</a>,
     },
-  ];
+  ]);
   
   const data = [];
   
@@ -68,18 +69,14 @@ const columns = [
 
   
   export default function Table1(props){
-    
-     let  {unCheck} = props.data;
-     if(unCheck) {
-          unCheck = [[unCheck]]
-     } else {
-       unCheck = []
+     
+     const {check} = props.data;
+     console.log(props,67777)
+     const history = useHistory();
+     const query = () => {
+       history.push('/detail')
      }
-     console.log(unCheck,777)
       return (
-        <div>
-           <TableTemplate columns={columns} data={unCheck} ></TableTemplate>
-        </div>
-       
+        <TableTemplate columns={columns(query)} data={[check]} ></TableTemplate>
       )
   }

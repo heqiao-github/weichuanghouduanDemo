@@ -1,4 +1,4 @@
-const treeConfig = [
+const menuConfig1 = [
   {
     title:"首页",
     key:"/"
@@ -23,4 +23,4 @@ const treeConfig = [
   }
 ]
 
-export default treeConfig;
+export default menuConfig1;

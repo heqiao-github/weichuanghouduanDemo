@@ -1,7 +1,11 @@
-const treeConfig = [
+const menuConfig1 = [
   {
     title:"首页",
     key:"/"
+  },
+  {
+    title:"首页",
+    key:"/detail"
   },
   {
     title: "用户中心",
@@ -23,4 +27,4 @@ const treeConfig = [
   }
 ]
 
-export default treeConfig;
+export default menuConfig1;

@@ -19,6 +19,7 @@ class FrontendAuth extends Component {
     const user = JSON.parse(localStorage.getItem("user"));
     let { menus } = roles && roles.find((item) => item._id === user.role_id);
     this.menus = menus;
+    debugger
     const newRouter = routes
       ? routes.map((route, key) => {
           if (route.path !== "/login" && route.path !== "/404") {
@@ -73,6 +74,7 @@ class FrontendAuth extends Component {
   goToPage = (routes, config) => {
     // 展示菜单信息
     const subMenu = this.getMenu(config);
+    debugger
     return this.requireAuth(routes.path) ? (
       <Page
         subMenu={subMenu}
